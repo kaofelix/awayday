@@ -1,5 +1,6 @@
 Given /^my name is Neil Craven$/ do
-  pending # express the regexp above with the code you wish you had
+  visit('/')
+  fill_in 'Name', :with => 'Neil Craven'
 end
 
 Given /^my talk proposal has the following information$/ do |table|

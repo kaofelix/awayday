@@ -1,7 +1,6 @@
 Feature: Talk submission form
   This feature will describe the Talk submission form. 
 
-  @wip
   Scenario: Potential speaker registers their interest
     Given my name is Neil Craven
     And my talk proposal has the following information

@@ -1,0 +1,2 @@
+require './awayday'
+run AwayDayApp
