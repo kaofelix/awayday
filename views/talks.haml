@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %title Away day form
+  %body
+    - @talks.each_with_index do |talk, index|
+      %span= "#{index}"
+      %span= "Title: '#{talk.title}'"
+      %span= "Subject: '#{talk.subject}'"
+      %span= "Category: '#{talk.category}'"
+      %span= "Duration: '#{talk.duration}'"
+      %br

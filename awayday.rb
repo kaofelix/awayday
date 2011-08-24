@@ -23,5 +23,11 @@ class AwayDayApp < Sinatra::Base
 
     redirect "/", flash[:notice] = "Congratulations"
   end
+
+  get '/talks' do
+    @talks = Talk.all
+
+    haml :talks
+  end
 end
 
