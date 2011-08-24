@@ -3,6 +3,9 @@
   %head
     %title Away day form
   %body
+    - if flash[:notice]
+      %p.notice= flash[:notice]
+
     %form{:action => '/talk', :method => "POST"}
       %label{:for=>'name'} Name
       %input#name{:name=> 'name'}

@@ -1,9 +1,15 @@
+require 'rack-flash'
 require 'sinatra/base'
+require 'sinatra/redirect_with_flash'
 require 'mongoid'
 
 Dir["./models/**/*.rb"].each { |model| require model }
 
+
 class AwayDayApp < Sinatra::Base
+  enable :sessions
+  use Rack::Flash, :sweep => true
+
   get '/' do
     haml :index
   end
@@ -15,7 +21,7 @@ class AwayDayApp < Sinatra::Base
       :duration => params[:duration]
     talk.save
 
-    redirect "/"
+    redirect "/", flash[:notice] = "Congratulations"
   end
 end
 
