@@ -1,0 +1,17 @@
+- install heroku gem
+
+- create SSH keys (http://devcenter.heroku.com/articles/keys)
+
+* send the public key to heroku
+  'heroku keys:add'
+
+* create heroku app:
+  'heroku create awayday'
+
+- enter account info (it will submit your public key to heroku)
+
+* add MongoLab to the heroku app
+  'heroku addons:add mongolab:starter'
+
+* push the app to heroku
+  'git push heroku master'

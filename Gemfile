@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source :gemcutter
 gem "rspec"
 gem "cucumber"
 gem "capybara"
@@ -8,3 +8,4 @@ gem "mongoid"
 gem "bson_ext"
 gem "rack-flash"
 gem "sinatra-redirect-with-flash"
+gem "heroku"
