@@ -3,15 +3,15 @@
   %head
     %title Away day form
   %body
-    %form
+    %form{:action => '/talk', :method => "POST"}
       %label{:for=>'name'} Name
-      %input#name
+      %input#name{:name=> 'name'}
       %label{:for=>'talk_title'} Talk Title
-      %input#talk_title
+      %input#talk_title{:name=> 'talk_title'}
       %label{:for=>'subject'} Subject
-      %input#subject
+      %input#subject{:name=> 'subject'}
       %label{:for=>'category'} Category
-      %input#category
+      %input#category{:name=> 'category'}
       %label{:for=>'duration'} Duration
-      %input#duration
-      %input{:type=>'submit'}
+      %input#duration{:name=> 'duration'}
+      %input{:type=>'submit', :value=> 'Submit'}

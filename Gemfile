@@ -1,5 +1,8 @@
 source "http://rubygems.org"
+gem "rspec"
 gem "cucumber"
 gem "capybara"
 gem "sinatra"
 gem "haml"
+gem "mongoid"
+gem "bson_ext"

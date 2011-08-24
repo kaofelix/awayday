@@ -1,22 +1,25 @@
 Given /^my name is Neil Craven$/ do
   visit('/')
-  fill_in 'Name', :with => 'Neil Craven'
+  @presenter = Presenter.new :name => "Neil Craven"
+  fill_in 'Name', :with => @presenter.name
 end
 
 Given /^my talk proposal has the following information$/ do |table|
-  talk = table.hashes.first
-  fill_in 'Talk Title', :with => talk['Talk Title']
-  fill_in 'Subject', :with => talk['Subject']
-  fill_in 'Category', :with => talk['Category']
-  fill_in 'Duration', :with => talk['Duration']
+  hashes = table.hashes.first
+  @talk = Talk.new :title => hashes['Talk Title'], :subject => hashes['Subject'], :category => hashes['Category'], :duration => hashes['Duration']
+
+  fill_in 'Talk Title', :with => @talk.title
+  fill_in 'Subject', :with => @talk.subject
+  fill_in 'Category', :with => @talk.category
+  fill_in 'Duration', :with => @talk.duration
 end
 
 When /^I submit my talk proposal$/ do
-  find(:css, "input[type='submit']").click
+  click_button "Submit"
 end
 
 Then /^my talk proposal will be on the list of talk proposals$/ do
-  pending # TalkProposals.find_all.should_contain @my_talk
+  Talk.all.size.should be 1
 end
 
 Then /^I will see a confirmation that my proposal has been submitted$/ do
