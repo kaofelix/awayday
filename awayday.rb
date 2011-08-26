@@ -29,5 +29,9 @@ class AwayDayApp < Sinatra::Base
 
     haml :talks
   end
+
+  get '/css/awayday.css' do
+    scss :awayday
+  end
 end
 
