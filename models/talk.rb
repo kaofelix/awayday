@@ -4,4 +4,5 @@ class Talk
   field :subject
   field :category
   field :duration
+  belongs_to :presenter
 end

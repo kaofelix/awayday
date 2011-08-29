@@ -1,6 +1,7 @@
 %ol
   - @talks.each_with_index do |talk|
     %li
+      %span= "Presenter '#{talk.presenter.name}'"
       %span= "Title: '#{talk.title}'"
       %span= "Subject: '#{talk.subject}'"
       %span= "Category: '#{talk.category}'"

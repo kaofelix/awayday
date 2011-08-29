@@ -18,7 +18,12 @@ class AwayDayApp < Sinatra::Base
       :subject => params[:subject],
       :category => params[:category],
       :duration => params[:duration]
+
+    presenter = Presenter.new :name => params[:name]
+
+    presenter.talks << talk
     talk.save
+    presenter.save
 
     redirect "/", flash[:notice] = "Congratulations"
   end

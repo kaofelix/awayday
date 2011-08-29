@@ -7,7 +7,8 @@ Feature: Talk submission form
     | Talk Title | Subject             | Category | Duration |
     | My Talk    | My talk about talks | Talks    | 45 mins  |
     When I submit my talk proposal
-    Then my talk proposal will be on the list of talk proposals
+    Then I will be in the list of possible presenters
+    And my talk proposal will be on the list of talk proposals
     And I will see a confirmation that my proposal has been submitted
 
   @wip
