@@ -1,7 +1,7 @@
-- @talks.each_with_index do |talk, index|
-  %span= "#{index}"
-  %span= "Title: '#{talk.title}'"
-  %span= "Subject: '#{talk.subject}'"
-  %span= "Category: '#{talk.category}'"
-  %span= "Duration: '#{talk.duration}'"
-  %br
+%ol
+  - @talks.each_with_index do |talk|
+    %li
+      %span= "Title: '#{talk.title}'"
+      %span= "Subject: '#{talk.subject}'"
+      %span= "Category: '#{talk.category}'"
+      %span= "Duration: '#{talk.duration}'"
