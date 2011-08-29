@@ -1,21 +1,15 @@
-!!! 5
-%html
-  %head
-    %title Away day form
-    %link{:rel=>"stylesheet", :type => 'text/css', :href=>'css/awayday.css', :media => 'screen'}
-  %body
-    - if flash[:notice]
-      %p.notice= flash[:notice]
+- if flash[:notice]
+  %p.notice= flash[:notice]
 
-    %form{:action => '/talk', :method => "POST"}
-      %label{:for=>'name'} Name
-      %input#name{:name=> 'name'}
-      %label{:for=>'talk_title'} Talk Title
-      %input#talk_title{:name=> 'talk_title'}
-      %label{:for=>'subject'} Subject
-      %input#subject{:name=> 'subject'}
-      %label{:for=>'category'} Category
-      %input#category{:name=> 'category'}
-      %label{:for=>'duration'} Duration
-      %input#duration{:name=> 'duration'}
-      %input{:type=>'submit', :value=> 'Submit'}
+%form{:action => '/talk', :method => "POST"}
+  %label{:for=>'name'} Name
+  %input#name{:type=>'text', :name=> 'name'}
+  %label{:for=>'talk_title'} Talk Title
+  %input#talk_title{:type=>'text', :name=> 'talk_title'}
+  %label{:for=>'subject'} Subject
+  %input#subject{:type=>'text', :name=> 'subject'}
+  %label{:for=>'category'} Category
+  %input#category{:type=>'text', :name=> 'category'}
+  %label{:for=>'duration'} Duration
+  %input#duration{:type=>'text', :name=> 'duration'}
+  %input.green.button{:type=>'submit', :value=> 'Submit'}

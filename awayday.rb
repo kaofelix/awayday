@@ -5,7 +5,6 @@ require 'mongoid'
 
 Dir["./models/**/*.rb"].each { |model| require model }
 
-
 class AwayDayApp < Sinatra::Base
   enable :sessions
   use Rack::Flash, :sweep => true
@@ -32,6 +31,10 @@ class AwayDayApp < Sinatra::Base
 
   get '/css/awayday.css' do
     scss :awayday
+  end
+
+  get '/images/background.png' do
+    send_file './images/background.png'
   end
 end
 
