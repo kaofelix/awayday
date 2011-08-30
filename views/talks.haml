@@ -1,5 +1,5 @@
 %ol
-  - @talks.each_with_index do |talk|
+  - @talks.each do |talk|
     %li
       %span= "Presenter '#{talk.presenter.name}'"
       %span= "Title: '#{talk.title}'"
