@@ -1,4 +1,4 @@
-$green: #228B22;//#0078AE;
+$green: #228B22;
 $lighter-green: lighten($green, 10%);
 $light-green: lighten($green, 40%);
 $darker-green: darken($green, 10%);
@@ -7,7 +7,6 @@ $dark-green: darken($green, 40%);
 body {
   font: 11px "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
   background: #EEE url("/images/background.png") top center;
-  /*font: 10pt/15pt "Helvetica Neue", Helvetica, Arial, sans-serif*/
 }
 
 label {
@@ -15,21 +14,26 @@ label {
   font-size: 18px;
 }
 
-input {
+input[type="text"] {
   color: #666;
-  /*font-size: 16px;*/
   font-size: 24px;
-  /*height: 28px;*/
-  /*margin: 4px 0px 10px 0px;*/
   margin: 2px 6px 16px 0px;
-  /*padding: 5px 0px 0px 5px;*/
-  /*padding: 3px;*/
   padding: 5px 7px 5px 5px;
-  /*width: 260px;*/
   width: 97%;
   border: 2px solid #E5E5E5;
   background: #FBFBFB;
-  /*border-radius: 6px;*/
+}
+
+#duration {
+  color: #666;
+  font-size: 24px;
+  width: 97%;
+  margin: 2px 6px 16px 0px;
+  padding: 5px 7px 5px 5px;
+}
+
+#duration .input {
+  margin-right: 5px;
 }
 
 .submit {
@@ -45,7 +49,7 @@ input {
   border: 2px solid #DDD;
   &:hover {
     background-color: $light-green;
-    color: $darker-green;//#026890;
+    color: $darker-green;
   }
 
 }
@@ -57,14 +61,11 @@ input {
   color: #64991e;
   color: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
   color: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
-  /*color: #888;*/
   margin: 5px 25%;
   font-family: 'Lobster';
-  /*font-family: 'Lobster Two';*/
 }
 
 .button {
-  /*text-transform: uppercase;*/
   display: inline-block;
   vertical-align: baseline;
   margin: 0 2px;
@@ -187,24 +188,14 @@ input {
 }
 
 .notice {
-  text-transform: uppercase;
-  color: $darker-green;//#228B22;
-  /*border-radius: 6px;*/
-  /*float: left;*/
-  /*margin-left: 25%;*/
-  /*background-color: #FFEBE8;*/
-  background-color: $light-green;//#90EE90;
+  color: $darker-green;
+  background-color: $light-green;
   font-size: 24px;
-  height: 28px;
   text-align: center;
-  /*margin: 4px 0px 10px 0px;*/
   margin: 2px 6px 16px 0px;
-  /*padding: 5px 0px 0px 5px;*/
-  /*padding: 3px;*/
   padding: 5px 7px 5px 5px;
-  /*width: 260px;*/
   width: 97%;
-  border: 2px solid $darker-green;//#228B22;
+  border: 2px solid $darker-green;
 }
 
 ol {
@@ -219,40 +210,3 @@ ol {
     &:nth-child(odd) {background: #FBFBFB}
   }
 }
-
-/*div.submission {*/
-/*width: 320px;*/
-/*margin: 7em auto;*/
-/*}*/
-
-/*.content {*/
-/*background: #E0EDF6 url("../img/content-bg.jpg") top center;*/
-/*}*/
-
-/*form*/
-
-
-
-/*.submit {*/
-/*background-color: #005481;*/
-/*cursor: pointer;*/
-/*text-transform: uppercase;*/
-/*padding: 9px 30px;*/
-/*text-align: center;*/
-/*}*/
-
-/*#submitbutton input {*/
-/*cursor: pointer;*/
-/*background: url(../img/submit.png) no-repeat;*/
-/*width: 445px;*/
-/*height: 86px;*/
-/*border: none;*/
-/*text-indent: -9999px;*/
-/*position: relative;*/
-/*bottom: 10px;*/
-/*}*/
-
-/*.error {*/
-/*background-color: #FFEBE8;*/
-/*border-color: #C00;*/
-/*}*/

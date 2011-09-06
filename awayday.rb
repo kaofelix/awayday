@@ -25,7 +25,7 @@ class AwayDayApp < Sinatra::Base
     talk.save
     presenter.save
 
-    redirect "/", flash[:notice] = "Congratulations"
+    redirect "/", flash[:notice] = create_success_message_for(presenter, talk)
   end
 
   get '/talks' do
@@ -40,6 +40,14 @@ class AwayDayApp < Sinatra::Base
 
   get '/images/background.png' do
     send_file './images/background.png'
+  end
+
+  private
+
+  def create_success_message_for(presenter, talk)
+    message = "Congratulations, #{presenter.name}. "
+    message << "Your proposal '#{talk.title}' was submitted. "
+    message << "You will have #{talk.duration}mins to present in the category #{talk.category}. "
   end
 end
 

@@ -11,5 +11,9 @@
   %label{:for=>'category'} Category
   %input#category{:type=>'text', :name=> 'category'}
   %label{:for=>'duration'} Duration
-  %input#duration{:type=>'text', :name=> 'duration'}
+  #duration
+    %input#45mins{:type=>"radio", :name=>"duration", :value=>"45"}
+      %span 45mins
+    %input#90mins{:type=>"radio", :name=>"duration", :value=>"90"}
+      %span 90mins
   %input.green.button{:type=>'submit', :value=> 'Submit'}

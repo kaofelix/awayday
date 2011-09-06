@@ -13,9 +13,8 @@ World do
   end
 end
 
-After do |scenario|
-  Presenter.destroy_all
-  Talk.destroy_all
+Before do |scenario|
+  Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
 end
 
 require File.dirname(__FILE__) + '/../../awayday'
