@@ -11,6 +11,7 @@ class AwayDayApp < Sinatra::Base
 
   get '/' do
     @durations = Talk::DURATIONS
+    @categories = Talk::CATEGORIES
 
     haml :index
   end

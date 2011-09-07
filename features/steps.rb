@@ -11,7 +11,7 @@ Given /^my (.*) proposal has the following information$/ do |type, table|
 
   fill_in 'Talk Title', :with => @talk.title
   fill_in 'Subject', :with => @talk.subject
-  fill_in 'Category', :with => @talk.category
+  select @talk.category, :from=>"category"
   choose @talk.duration
 end
 

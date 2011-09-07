@@ -9,10 +9,13 @@
   %label{:for=>'subject'} Subject
   %input#subject{:type=>'text', :name=> 'subject'}
   %label{:for=>'category'} Category
-  %input#category{:type=>'text', :name=> 'category'}
+  %select#category{:name => "category"}
+    - @categories.each do |category|
+      %option #{category}
   %label{:for=>'duration'} Duration
   #duration
     - @durations.each do |type, duration|
       %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
       %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}
+

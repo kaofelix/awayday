@@ -5,7 +5,7 @@ Feature: Talk submission form
     Given my name is Creil Naven
     And my talk proposal has the following information
     | Talk Title | Subject             | Category | Duration |
-    | My Talk    | My talk about talks | Talks    | 45mins   |
+    | My Talk    | My talk about talks | SIP      | 45mins   |
     When I submit my talk proposal
     Then I will be in the list of possible presenters
     And my talk proposal will be on the list of proposals
@@ -14,29 +14,34 @@ Feature: Talk submission form
   Scenario: Potential speaker registers his workshop
     Given my name is Carlo Paroli
     And my workshop proposal has the following information
-    | Talk Title  | Subject                  | Category | Duration |
-    | My Workshop | My workshop about babies | Workshop | 90mins   |
+    | Talk Title  | Subject                  | Category  | Duration |
+    | My Workshop | My workshop about babies | Technical | 90mins   |
     When I submit my workshop proposal
     Then I will be in the list of possible presenters
     And my workshop proposal will be on the list of proposals
     And I will see a confirmation that my proposal has been submitted
 
-  @wip
-  Scenario Outline: 
-    Given my name is Neil Craven
+  Scenario Outline: A presenter can choose between some defined categories
+    Given my name is John Presentation
     And my talk proposal has the following information
-    | Talk Title | <title>    |
-    | Subject    | <subject>  |
-    | Category   | <category> |
-    | Duration   | <Duration> |
-    
+    | Talk Title  | Subject     | Category   | Duration   |
+    | The Title   | The Subject | <category> | 45mins     |
     When I submit my talk proposal
-    Then I will be told that I need to check my information for problems
-    And I will be able to resubmit
+    Then I will be in the list of possible presenters
+    And my talk proposal will be on the list of proposals
+    And I will see a confirmation that my proposal has been submitted
 
     Examples:
-    | Row | <title> | <subject> | <category> | <Duration> |
-    |   1 |         |           |            |            |
-    |   2 |         |           |            |            |
-    |   3 |         |           |            |            |
+    | category                      |
+    | SIP                           |
+    | Technical                     |
+    | Non-Technical                 |
+    | Entrepreuneurial              |
+    | Life Skills                   |
+    | Nothing to do with Technology |
+    | Health and Well Being         |
+    | Hobbies                       |
 
+    #When I submit my talk proposal
+    #Then I will be told that I need to check my information for problems
+    #And I will be able to resubmit
