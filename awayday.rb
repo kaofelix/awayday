@@ -10,6 +10,8 @@ class AwayDayApp < Sinatra::Base
   use Rack::Flash, :sweep => true
 
   get '/' do
+    @durations = Talk::DURATIONS
+
     haml :index
   end
 

@@ -12,8 +12,7 @@
   %input#category{:type=>'text', :name=> 'category'}
   %label{:for=>'duration'} Duration
   #duration
-    %input#45mins{:type=>"radio", :name=>"duration", :value=>"45"}
-    %label{:for=>"45mins"} 45mins
-    %input#90mins{:type=>"radio", :name=>"duration", :value=>"90"}
-    %label{:for=>"90mins"} 90mins
+    - @durations.each do |type, duration|
+      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
+      %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}

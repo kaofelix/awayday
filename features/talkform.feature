@@ -2,7 +2,7 @@ Feature: Talk submission form
   This feature will describe the Talk submission form. 
 
   Scenario: Potential speaker registers his talk
-    Given my name is Neil Craven
+    Given my name is Creil Naven
     And my talk proposal has the following information
     | Talk Title | Subject             | Category | Duration |
     | My Talk    | My talk about talks | Talks    | 45mins   |

@@ -5,4 +5,6 @@ class Talk
   field :category
   field :duration
   belongs_to :presenter
+
+  DURATIONS = {:talk=>"45", :workshop=>"90"}
 end
