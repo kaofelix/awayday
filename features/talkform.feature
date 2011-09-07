@@ -4,8 +4,8 @@ Feature: Talk submission form
   Scenario: Potential speaker registers his talk
     Given my name is Creil Naven
     And my talk proposal has the following information
-    | Talk Title | Subject             | Category | Duration |
-    | My Talk    | My talk about talks | SIP      | 45mins   |
+    | Title    | Summary             | Category | Duration |
+    | My Talk  | My talk about talks | SIP      | 45mins   |
     When I submit my talk proposal
     Then I will be in the list of possible presenters
     And my talk proposal will be on the list of proposals
@@ -14,7 +14,7 @@ Feature: Talk submission form
   Scenario: Potential speaker registers his workshop
     Given my name is Carlo Paroli
     And my workshop proposal has the following information
-    | Talk Title  | Subject                  | Category  | Duration |
+    | Title       | Summary                  | Category  | Duration |
     | My Workshop | My workshop about babies | Technical | 90mins   |
     When I submit my workshop proposal
     Then I will be in the list of possible presenters
@@ -24,8 +24,8 @@ Feature: Talk submission form
   Scenario Outline: A presenter can choose between some defined categories
     Given my name is John Presentation
     And my talk proposal has the following information
-    | Talk Title  | Subject     | Category   | Duration   |
-    | The Title   | The Subject | <category> | 45mins     |
+    | Title     | Summary     | Category   | Duration   |
+    | The Title | The Summary | <category> | 45mins     |
     When I submit my talk proposal
     Then I will be in the list of possible presenters
     And my talk proposal will be on the list of proposals

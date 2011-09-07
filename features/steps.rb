@@ -6,11 +6,11 @@ end
 
 Given /^my (.*) proposal has the following information$/ do |type, table|
   hashes = table.hashes.first
-  @talk = Talk.new :title => hashes['Talk Title'], :subject => hashes['Subject'], :category => hashes['Category'], :duration => hashes['Duration']
+  @talk = Talk.new :title => hashes['Title'], :summary => hashes['Summary'], :category => hashes['Category'], :duration => hashes['Duration']
   @presenter.talks << @talk
 
-  fill_in 'Talk Title', :with => @talk.title
-  fill_in 'Subject', :with => @talk.subject
+  fill_in 'Title', :with => @talk.title
+  fill_in 'Summary', :with => @talk.summary
   select @talk.category, :from=>"category"
   choose @talk.duration
 end
@@ -30,7 +30,7 @@ end
 Then /^I will see a confirmation that my proposal has been submitted$/ do
   page.should have_content "Congratulations, #{@presenter.name}."
   page.should have_content "Your proposal '#{@talk.title}' was submitted."
-  page.should have_content "You will have #{@talk.duration} to present in the category #{@talk.category}."
+  page.should have_content "You will have #{@talk.duration} to present in the #{@talk.category} category."
 end
 
 Then /^I will be told that I need to check my information for problems$/ do

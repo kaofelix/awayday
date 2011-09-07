@@ -24,6 +24,12 @@ input[type="text"] {
   background: #FBFBFB;
 }
 
+input[type="radio"] {
+  color: #666;
+  margin: 2px 4px 10px 18px;
+  padding: 5px 7px 5px 5px;
+}
+
 select {
   color: #666;
   font-size: 24px;
@@ -31,12 +37,22 @@ select {
   width: 98.5%;
 }
 
+textarea {
+  color: #666;
+  font-size: 18px;
+  margin: 10px 0px;
+  width: 98%;
+  height: 50px;
+  border: 2px solid #E5E5E5;
+  background: #FBFBFB;
+}
+
 #duration {
   color: #666;
   font-size: 24px;
   width: 97%;
-  margin: 2px 6px 16px 0px;
-  padding: 5px 7px 5px 5px;
+  padding: 0 25% 0 10%;
+  margin: 2px 2px 2px 2px;
 }
 
 #duration .input {

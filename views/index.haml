@@ -4,18 +4,18 @@
 %form{:action => '/talk', :method => "POST"}
   %label{:for=>'name'} Name
   %input#name{:type=>'text', :name=> 'name'}
-  %label{:for=>'talk_title'} Talk Title
-  %input#talk_title{:type=>'text', :name=> 'talk_title'}
-  %label{:for=>'subject'} Subject
-  %input#subject{:type=>'text', :name=> 'subject'}
-  %label{:for=>'category'} Category
-  %select#category{:name => "category"}
-    - @categories.each do |category|
-      %option #{category}
+  %label{:for=>'title'} Title
+  %input#title{:type=>'text', :name=> 'title'}
   %label{:for=>'duration'} Duration
   #duration
     - @durations.each do |type, duration|
       %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
       %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
+  %label{:for=>'category'} Category
+  %select#category{:name => "category"}
+    - @categories.each do |category|
+      %option #{category}
+  %label{:for=>'summary'} Summary
+  %textarea#summary{:name=> 'summary'}
   %input.green.button{:type=>'submit', :value=> 'Submit'}
 

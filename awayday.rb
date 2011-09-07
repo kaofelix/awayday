@@ -2,6 +2,7 @@ require 'rack-flash'
 require 'sinatra/base'
 require 'sinatra/redirect_with_flash'
 require 'mongoid'
+require 'haml'
 
 Dir["./models/**/*.rb"].each { |model| require model }
 
@@ -17,8 +18,8 @@ class AwayDayApp < Sinatra::Base
   end
 
   post '/talk' do
-    talk = Talk.new :title => params[:talk_title],
-      :subject => params[:subject],
+    talk = Talk.new :title => params[:title],
+      :summary => params[:summary],
       :category => params[:category],
       :duration => params[:duration]
 
@@ -50,7 +51,7 @@ class AwayDayApp < Sinatra::Base
   def create_success_message_for(presenter, talk)
     message = "Congratulations, #{presenter.name}. "
     message << "Your proposal '#{talk.title}' was submitted. "
-    message << "You will have #{talk.duration}mins to present in the category #{talk.category}. "
+    message << "You will have #{talk.duration}mins to present in the #{talk.category} category. "
   end
 end
 
