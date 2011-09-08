@@ -8,11 +8,11 @@
   %input#title{:type=>'text', :name=> 'title'}
   %label{:for=>'summary'} Summary
   %textarea#summary{:name=> 'summary'}
-  %label{:for=>'duration'} Duration
   %label{:for=>'category'} Category
   %select#category{:name => "category"}
     - @categories.each do |category|
       %option #{category}
+  %label{:for=>'duration'} Duration
   #duration
     - @durations.each do |type, duration|
       %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
