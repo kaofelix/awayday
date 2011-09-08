@@ -6,16 +6,16 @@
   %input#name{:type=>'text', :name=> 'name'}
   %label{:for=>'title'} Title
   %input#title{:type=>'text', :name=> 'title'}
+  %label{:for=>'summary'} Summary
+  %textarea#summary{:name=> 'summary'}
   %label{:for=>'duration'} Duration
-  #duration
-    - @durations.each do |type, duration|
-      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
-      %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %label{:for=>'category'} Category
   %select#category{:name => "category"}
     - @categories.each do |category|
       %option #{category}
-  %label{:for=>'summary'} Summary
-  %textarea#summary{:name=> 'summary'}
+  #duration
+    - @durations.each do |type, duration|
+      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
+      %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}
 
