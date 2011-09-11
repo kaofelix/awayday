@@ -6,6 +6,7 @@ gem "mongoid", "~> 2.1"
 gem "bson_ext", "~> 1.3"
 gem "rack-flash"
 gem "sinatra-redirect-with-flash"
+gem "sinatra-assetpack", :require => "sinatra/assetpack"
 gem "heroku"
 
 group :test do

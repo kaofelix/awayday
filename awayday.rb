@@ -1,14 +1,27 @@
 require 'rack-flash'
 require 'sinatra/base'
 require 'sinatra/redirect_with_flash'
+require 'sinatra/assetpack'
 require 'mongoid'
 require 'haml'
 
 Dir["./models/**/*.rb"].each { |model| require model }
 
 class AwayDayApp < Sinatra::Base
+  set :root, File.dirname(__FILE__)
+  register Sinatra::AssetPack
+
   enable :sessions
   use Rack::Flash, :sweep => true
+
+  assets do
+    serve '/css', from: '/assets/css'
+    serve '/images', from: '/assets/images'
+    serve '/fonts', from: '/assets/fonts'
+
+    css :awayday, [ 'css/awayday.css' ]
+    css_compression :sass
+  end
 
   get '/' do
     @durations = Talk::DURATIONS
@@ -36,14 +49,6 @@ class AwayDayApp < Sinatra::Base
     @talks = Talk.all
 
     haml :talks
-  end
-
-  get '/css/awayday.css' do
-    scss :awayday
-  end
-
-  get '/images/background.png' do
-    send_file './images/background.png'
   end
 
   private
