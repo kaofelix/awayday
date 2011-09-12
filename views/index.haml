@@ -3,11 +3,11 @@
 
 %form{:action => '/talk', :method => "POST"}
   %label{:for=>'name'} Name
-  %input#name{:type=>'text', :name=> 'name'}
+  %input#name{:type=>'text', :name=> 'name', :placeholder => "Enter your name"}
   %label{:for=>'title'} Title
-  %input#title{:type=>'text', :name=> 'title'}
+  %input#title{:type=>'text', :name=> 'title', :placeholder => "Enter the title of your proposal"}
   %label{:for=>'summary'} Summary
-  %textarea#summary{:name=> 'summary'}
+  %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary of your presentation."}
   %label{:for=>'category'} Category
   %select#category{:name => "category"}
     - @categories.each do |category|
