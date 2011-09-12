@@ -5,7 +5,7 @@ describe 'A Presenter' do
 
   before(:each) do
     @talk = Talk.new :title => "The Title",
-                     :summary => "The content",
+                     :summary => "The content should be big enough to let people evaluate it",
                      :category => "SIP",
                      :duration => 45
 

@@ -25,4 +25,9 @@ class Talk
   validates_presence_of :duration
   validates_presence_of :presenter
 
+  validates_inclusion_of :category, in: CATEGORIES
+  validates_inclusion_of :duration, in: DURATIONS.values
+
+  validates_length_of :summary, within: 50..400
+
 end

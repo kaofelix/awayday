@@ -16,7 +16,7 @@ describe 'The Awayday Submission App' do
     post '/talk', params = {:name => "John Presentation",
                             :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
-                            :summary => "This is the content",
+                            :summary => "The content should be big enough to let people evaluate it",
                             :category => "SIP",
                             :duration => 45 }
 
@@ -27,7 +27,7 @@ describe 'The Awayday Submission App' do
 
     talk = Talk.first
     talk.title.should == "The Presentation"
-    talk.summary.should == "This is the content"
+    talk.summary.should == "The content should be big enough to let people evaluate it"
     talk.category.should == "SIP"
     talk.duration.should == 45
     talk.presenter.name.should == "John Presentation"
@@ -36,13 +36,19 @@ describe 'The Awayday Submission App' do
 
   it "lists the talks" do
     talker = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com"
-    talk = Talk.new :title => "The Talk", :summary => "Talking Things", :category => "Non-Technical", :duration => 45
+    talk = Talk.new :title => "The Talk",
+                    :summary => "Talking Things Talking Things Talking Things Talking",
+                    :category => "Non-Technical",
+                    :duration => 45
     talker.talks << talk
     talk.save!
     talker.save!
 
     workshoper = Presenter.new :name => "Anna Workshop", :email => "anna.workshop@awayday.com"
-    workshop = Talk.new :title => "The Workshop", :summary => "Workshop Stuff", :category => "Hobbies", :duration => "90"
+    workshop = Talk.new :title => "The Workshop",
+                        :summary => "Workshop Stuff Workshop Stuff Workshop Stuff Workshop",
+                        :category => "Hobbies",
+                        :duration => "90"
     workshoper.talks << workshop
     workshop.save!
     workshoper.save!
