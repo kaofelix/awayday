@@ -28,9 +28,7 @@ Then /^my (.*) proposal will be on the list of proposals$/ do |proposal|
 end
 
 Then /^I will see a confirmation that my proposal has been submitted$/ do
-  page.should have_content "Congratulations, #{@presenter.name}."
-  page.should have_content "Your proposal '#{@talk.title}' was submitted."
-  page.should have_content "You will have #{@talk.duration} to present in the #{@talk.category} category."
+  page.should have_content "Congratulations #{@presenter.name}. Your proposal was sent."
 end
 
 Then /^I will be told that I need to check my information for problems$/ do

@@ -1,8 +1,8 @@
 %ol
   - @talks.each do |talk|
     %li
-      %span= "Presenter '#{talk.presenter.name}'"
-      %span= "Title: '#{talk.title}'"
-      %span= "Summary: '#{talk.summary}'"
-      %span= "Category: '#{talk.category}'"
-      %span= "Duration: '#{talk.duration}'"
+      %span= "Presenter #{talk.presenter.name}"
+      %span= "Title: #{talk.title}"
+      %span= "Summary: #{talk.summary}"
+      %span= "Category: #{talk.category}"
+      %span= "Duration: #{talk.duration} mins"

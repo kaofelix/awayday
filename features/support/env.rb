@@ -17,4 +17,4 @@ Before do |scenario|
   Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
 end
 
-require File.dirname(__FILE__) + '/../../awayday'
+require File.join(File.dirname(__FILE__), '..', '..', 'awayday')

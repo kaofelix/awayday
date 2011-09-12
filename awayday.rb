@@ -54,9 +54,7 @@ class AwayDayApp < Sinatra::Base
   private
 
   def create_success_message_for(presenter, talk)
-    message = "Congratulations, #{presenter.name}. "
-    message << "Your proposal '#{talk.title}' was submitted. "
-    message << "You will have #{talk.duration}mins to present in the #{talk.category} category. "
+    message = "Congratulations #{presenter.name}. Your proposal was sent."
   end
 end
 
