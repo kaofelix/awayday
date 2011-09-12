@@ -1,7 +1,8 @@
-Given /^my name is (.*)$/ do |name|
+Given /^my name is (.*) and my email is (.*)$/ do |name, email|
   visit('/')
-  @presenter = Presenter.new :name => name
+  @presenter = Presenter.new :name => name, :email => email
   fill_in 'Name', :with => @presenter.name
+  fill_in 'Email', :with => @presenter.email
 end
 
 Given /^my (.*) proposal has the following information$/ do |type, table|

@@ -14,6 +14,7 @@ describe 'Awayday Submission App' do
 
   it "saves the talk information" do
     post '/talk', params = {:name => "John Presentation",
+                            :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
                             :summary => "This is the content",
                             :category => "SIP",
@@ -30,16 +31,17 @@ describe 'Awayday Submission App' do
     talk.category.should == "SIP"
     talk.duration.should == "45"
     talk.presenter.name.should == "John Presentation"
+    talk.presenter.email.should == "john.presentation@awayday.com"
   end
 
   it "lists the talks" do
-    talker = Presenter.new :name => "John Presentation"
+    talker = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com"
     talk = Talk.new :title => "The Talk", :summary => "Talking Things", :category => "Non-Technical", :duration => "45"
     talker.talks << talk
     talk.save!
     talker.save!
 
-    workshoper = Presenter.new :name => "Anna Workshop"
+    workshoper = Presenter.new :name => "Anna Workshop", :email => "anna.workshop@awayday.com"
     workshop = Talk.new :title => "The Workshop", :summary => "Workshop Stuff", :category => "Hobbies", :duration => "90"
     workshoper.talks << workshop
     workshop.save!
@@ -55,6 +57,7 @@ describe 'Awayday Submission App' do
 
   def should_have_talk(talk)
     last_response.body.should include("#{talk.presenter.name}")
+    last_response.body.should include("#{talk.presenter.email}")
     last_response.body.should include("#{talk.title}")
     last_response.body.should include("#{talk.summary}")
     last_response.body.should include("#{talk.category}")

@@ -36,7 +36,7 @@ class AwayDayApp < Sinatra::Base
       :category => params[:category],
       :duration => params[:duration]
 
-    presenter = Presenter.new :name => params[:name]
+    presenter = Presenter.new :name => params[:name], :email => params[:email]
 
     presenter.talks << talk
     talk.save
