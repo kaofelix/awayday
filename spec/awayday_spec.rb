@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
-describe 'Awayday Submission App' do
+describe 'The Awayday Submission App' do
 
   before(:each) do
     Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
