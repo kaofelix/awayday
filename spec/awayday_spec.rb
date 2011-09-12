@@ -18,7 +18,7 @@ describe 'The Awayday Submission App' do
                             :title => "The Presentation",
                             :summary => "This is the content",
                             :category => "SIP",
-                            :duration => "45" }
+                            :duration => 45 }
 
     last_response.should be_redirect
     last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
@@ -29,14 +29,14 @@ describe 'The Awayday Submission App' do
     talk.title.should == "The Presentation"
     talk.summary.should == "This is the content"
     talk.category.should == "SIP"
-    talk.duration.should == "45"
+    talk.duration.should == 45
     talk.presenter.name.should == "John Presentation"
     talk.presenter.email.should == "john.presentation@awayday.com"
   end
 
   it "lists the talks" do
     talker = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com"
-    talk = Talk.new :title => "The Talk", :summary => "Talking Things", :category => "Non-Technical", :duration => "45"
+    talk = Talk.new :title => "The Talk", :summary => "Talking Things", :category => "Non-Technical", :duration => 45
     talker.talks << talk
     talk.save!
     talker.save!

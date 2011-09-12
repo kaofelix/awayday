@@ -4,7 +4,12 @@ require File.join(File.dirname(__FILE__), '..', 'models', 'presenter')
 describe 'A Presenter' do
 
   before(:each) do
-    @presenter = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com", :talks => [Talk.new]
+    @talk = Talk.new :title => "The Title",
+                     :summary => "The content",
+                     :category => "SIP",
+                     :duration => 45
+
+    @presenter = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com", :talks => [@talk]
     Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
   end
 
