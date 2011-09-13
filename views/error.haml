@@ -1,0 +1,7 @@
+- if flash[:error]
+  .error
+    %p.message= flash[:error]
+    %ul
+      - unless errors.nil?
+        - errors.each do |error|
+          %li.error= error

@@ -4,6 +4,9 @@
     %title Away day form
     != css :awayday
   %body
+    %h1.headline Away Day Brazil
+    #message_container
+      =haml :notice
+      =haml :error, :locals => {:errors => session[:errors]}
     #container
-      %h1.headline Away Day Brazil
       = yield

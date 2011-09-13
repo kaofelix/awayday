@@ -37,12 +37,15 @@ class AwayDayApp < Sinatra::Base
       :duration => params[:duration]
 
     presenter = Presenter.new :name => params[:name], :email => params[:email]
-
     presenter.talks << talk
-    talk.save
-    presenter.save
 
-    redirect "/", flash[:notice] = create_success_message_for(presenter, talk)
+    if talk.valid? and presenter.valid?
+      presenter.save
+      redirect "/", flash[:notice] = create_success_message_for(presenter)
+    else
+      session[:errors] = create_array_of_errors_for(presenter, talk)
+      redirect "/", flash[:error] = create_error_message
+    end
   end
 
   get '/talks' do
@@ -53,8 +56,26 @@ class AwayDayApp < Sinatra::Base
 
   private
 
-  def create_success_message_for(presenter, talk)
-    message = "Congratulations #{presenter.name}. Your proposal was sent."
+  def create_success_message_for(presenter)
+    "Congratulations #{presenter.name}. Your proposal was sent."
+  end
+
+  def create_error_message
+    "Ooops. Something went wrong. Take a look at the following list and fill the form again:" 
+  end
+
+  def create_array_of_errors_for(presenter, talk)
+    error_messages = []
+    errors = talk.errors.messages
+    errors = errors.merge presenter.errors.messages
+    errors.each_pair do |key, value|
+      error_message = "#{key.to_s.capitalize}: "
+      value.each do |error|
+        error_message += "#{error.to_s.capitalize}. "
+      end
+      error_messages << error_message
+    end
+    error_messages
   end
 end
 

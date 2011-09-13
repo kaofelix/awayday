@@ -4,6 +4,10 @@ $light-green: lighten($green, 40%);
 $darker-green: darken($green, 10%);
 $dark-green: darken($green, 40%);
 
+$red: red;
+$darker-red: darken($red, 10%);
+$light-red: lighten($red, 40%);
+
 @font-face {
   font-family: Lobster;
   src: url('/fonts/Lobster/Lobster.ttf');
@@ -22,7 +26,13 @@ body {
 #container {
   width: 400px;
   float: center;
-  margin: 0 auto;
+  margin: auto;
+}
+
+#message_container {
+  width: 500px;
+  float: center;
+  margin: auto;
 }
 
 label {
@@ -174,6 +184,26 @@ textarea {
   padding: 5px 7px 5px 5px;
   width: 97%;
   border: 2px solid $darker-green;
+}
+
+.error {
+  color: $darker-red;
+  background-color: $light-red;
+  font-size: 20px;
+  text-align: center;
+  margin: 2px 6px 16px 0px;
+  padding: 5px 7px 5px 5px;
+  width: 97%;
+  border: 2px solid $darker-red;
+  ul {
+    li {
+      font-size: 14px;
+      padding: 2px 2px 2px 2px;
+      border: none;
+      margin-bottom: 1px;
+      text-align: left;
+    }
+  }
 }
 
 ol {

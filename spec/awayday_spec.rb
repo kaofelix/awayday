@@ -24,6 +24,7 @@ describe 'The Awayday Submission App' do
     last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
 
     Talk.all.should have(1).items
+    Presenter.all.should have(1).items
 
     talk = Talk.first
     talk.title.should == "The Presentation"
@@ -34,14 +35,32 @@ describe 'The Awayday Submission App' do
     talk.presenter.email.should == "john.presentation@awayday.com"
   end
 
+  it "shows a error message if some of the params is wrong" do
+    pending "why something in the session is not showing?"
+    post '/talk', params = {:name => "John Presentation",
+                            :email => "john.presentation@awayday.com",
+                            :title => "The Presentation",
+                            :summary => "A small on purpose to make it invalid",
+                            :category => "SIP",
+                            :duration => 45 }
+
+    last_response.should be_redirect
+    last_response.body.should include('Ooops. Something went wrong. Take a look at the following list and fill the form again:')
+    last_response.body.should include('Summary:')
+    last_response.body.should include('Is too short (minimum is 50 characters).')
+
+    Talk.all.should have(0).items
+    Presenter.all.should have(0).items
+  end
+
   it "lists the talks" do
-    talker = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com"
+    talker = Presenter.new :name => "John Presentation",
+                           :email => "john.presentation@awayday.com"
     talk = Talk.new :title => "The Talk",
                     :summary => "Talking Things Talking Things Talking Things Talking",
                     :category => "Non-Technical",
                     :duration => 45
     talker.talks << talk
-    talk.save!
     talker.save!
 
     workshoper = Presenter.new :name => "Anna Workshop", :email => "anna.workshop@awayday.com"
@@ -50,7 +69,6 @@ describe 'The Awayday Submission App' do
                         :category => "Hobbies",
                         :duration => "90"
     workshoper.talks << workshop
-    workshop.save!
     workshoper.save!
 
     get '/talks'

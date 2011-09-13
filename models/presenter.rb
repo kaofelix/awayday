@@ -3,7 +3,9 @@ class Presenter
   field :name, type: String
   field :email, type: String
 
-  has_many :talks
+  has_many :talks, validate: false
+
+  before_save :save_talks
 
   validates_presence_of :name
   validates_presence_of :email
@@ -13,4 +15,10 @@ class Presenter
 
   validates_uniqueness_of :name, case_sensitive: false
   validates_uniqueness_of :email, case_sensitive: false
+
+  def save_talks
+    self.talks.each do |talk|
+      talk.save
+    end
+  end
 end
