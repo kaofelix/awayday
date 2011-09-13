@@ -53,6 +53,17 @@ select {
   width: 100%;
 }
 
+::-webkit-input-placeholder {
+  color: #CCC;
+  font-size: 16px;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #CCC;
+  font-size: 16px;
+}
+
 textarea {
   color: #666;
   font: 18px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
