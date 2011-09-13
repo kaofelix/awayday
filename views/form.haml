@@ -9,11 +9,11 @@
   %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary of your presentation."}
   %label{:for=>'category'} Category
   %select#category{:name => "category"}
-    - @categories.each do |category|
+    - categories.each do |category|
       %option #{category}
   %label{:for=>'duration'} Duration
   #duration
-    - @durations.each do |type, duration|
+    - durations.each do |type, duration|
       %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
       %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}

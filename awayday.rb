@@ -24,10 +24,7 @@ class AwayDayApp < Sinatra::Base
   end
 
   get '/' do
-    @durations = Talk::DURATIONS
-    @categories = Talk::CATEGORIES
-
-    haml :index
+    haml :form, :locals => {:durations => Talk::DURATIONS, :categories => Talk::CATEGORIES}
   end
 
   post '/talk' do
