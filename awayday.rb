@@ -46,9 +46,7 @@ class AwayDayApp < Sinatra::Base
   end
 
   get '/talks' do
-    @talks = Talk.all
-
-    haml :talks
+    haml :talks, :locals => {:talks => Talk.all}
   end
 
   private
