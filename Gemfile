@@ -13,7 +13,9 @@ gem "heroku"
 group :test do
   gem "rspec"
   gem "ZenTest"
-  gem "autotest-fsevent"
+  if RUBY_PLATFORM =~ /darwin/
+    gem "autotest-fsevent"
+  end
   gem "rack-test"
   gem "cucumber"
   gem "capybara"
