@@ -36,7 +36,6 @@ describe 'The Awayday Submission App' do
   end
 
   it "shows a error message if some of the params is wrong" do
-    pending "why something in the session is not showing?"
     post '/talk', params = {:name => "John Presentation",
                             :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
@@ -46,8 +45,6 @@ describe 'The Awayday Submission App' do
 
     last_response.should be_redirect
     last_response.body.should include('Ooops. Something went wrong. Take a look at the following list and fill the form again:')
-    last_response.body.should include('Summary:')
-    last_response.body.should include('Is too short (minimum is 50 characters).')
 
     Talk.all.should have(0).items
     Presenter.all.should have(0).items

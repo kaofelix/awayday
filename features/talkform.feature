@@ -21,6 +21,17 @@ Feature: Talk submission form
     And my workshop proposal will be on the list of proposals
     And I will see a confirmation that my proposal has been submitted
 
+  Scenario: Potential speaker registers with short summary
+    Given my name is Carlo Paroli and my email is carlo.paroli@awayday.com
+    And my workshop proposal has the following information
+    | Title       | Summary                   | Category  | Duration |
+    | My Workshop | My really quick workshop  | Technical | 90mins   |
+    When I submit my workshop proposal
+    Then I wont be in the list of possible presenters
+    And my workshop proposal wont be on the list of proposals
+    And I will see a message stating that something went wrong
+    And a message saying that the summary is too short
+
   Scenario Outline: A presenter can choose between some defined categories
     Given my name is John Presentation and my email is john.presentation@awayday.com
     And my talk proposal has the following information
