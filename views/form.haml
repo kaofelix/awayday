@@ -1,20 +1,20 @@
 %form{:action => '/talk', :method => "POST"}
   %label{:for=>'name'} Name
-  %input#name{:type=>'text', :name=> 'name', :placeholder => "Enter your name"}
+  %input#name{:type=>'text', :name=> 'name', :placeholder => "Enter your name", :required => true}
   %label{:for=>'email'} Email
-  %input#email{:type=>'email', :name=> 'email', :placeholder => "Enter your email"}
+  %input#email{:type=>'email', :name=> 'email', :placeholder => "Enter your email", :required => true}
   %label{:for=>'title'} Title
-  %input#title{:type=>'text', :name=> 'title', :placeholder => "Enter the title of your proposal"}
+  %input#title{:type=>'text', :name=> 'title', :placeholder => "Enter the title of your proposal", :required => true}
   %label{:for=>'summary'} Summary
-  %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary of your presentation."}
+  %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary. (50-400 chars)", :maxlength => "400", :required => true}
   %label{:for=>'category'} Category
-  %select#category{:name => "category"}
+  %select#category{:name => "category", :required => true}
     - categories.each do |category|
       %option #{category}
   %label{:for=>'duration'} Duration
   #duration
     - durations.each do |type, duration|
-      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}"}
+      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}", :checked => duration.eql?(45),  :required => true}
       %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}
 
