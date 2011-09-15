@@ -10,8 +10,6 @@ GEM
     activesupport (3.1.0)
       multi_json (~> 1.0)
     addressable (2.2.6)
-    autotest-fsevent (0.2.5)
-      sys-uname
     bcrypt-ruby (3.0.1)
     bson (1.3.1)
     bson_ext (1.3.1)
@@ -89,7 +87,6 @@ GEM
     sinatra-redirect-with-flash (0.1.2)
       rack-flash (>= 0.1.1)
       sinatra (>= 0.9.1)
-    sys-uname (0.8.6)
     term-ansicolor (1.0.6)
     tilt (1.3.3)
     tzinfo (0.3.29)
@@ -101,7 +98,6 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
-  autotest-fsevent
   bson_ext (~> 1.3)
   capybara
   cucumber
