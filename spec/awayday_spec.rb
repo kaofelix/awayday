@@ -20,9 +20,6 @@ describe 'The Awayday Submission App' do
                             :category => "SIP",
                             :duration => 45 }
 
-    last_response.should be_redirect
-    last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
-
     Talk.all.should have(1).items
     Presenter.all.should have(1).items
 
@@ -33,6 +30,36 @@ describe 'The Awayday Submission App' do
     talk.duration.should == 45
     talk.presenter.name.should == "John Presentation"
     talk.presenter.email.should == "john.presentation@awayday.com"
+
+    last_response.should be_redirect
+    last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
+  end
+
+  it "adds the second talk of a speaker to his talks" do
+    talker = Presenter.new :name => "John Presentation",
+                           :email => "john.presentation@awayday.com"
+    talk = Talk.new :title => "The Talk",
+                    :summary => "Talking Things Talking Things Talking Things Talking",
+                    :category => "Non-Technical",
+                    :duration => 45
+    talker.talks << talk
+    talker.save!
+
+    post '/talk', params = {:name => "John Presentation",
+                            :email => "john.presentation@awayday.com",
+                            :title => "The Presentation",
+                            :summary => "The content should be big enough to let people evaluate it",
+                            :category => "SIP",
+                            :duration => 45 }
+
+    Talk.all.should have(2).items
+    Presenter.all.should have(1).item
+
+    presenter = Presenter.first
+    presenter.talks.should have(2).item
+
+    last_response.should be_redirect
+    last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
   end
 
   it "shows a error message if some of the params is wrong" do
@@ -43,11 +70,11 @@ describe 'The Awayday Submission App' do
                             :category => "SIP",
                             :duration => 45 }
 
-    last_response.should be_redirect
-    last_response.body.should include('Ooops. Something went wrong. Take a look at the following list and fill the form again:')
-
     Talk.all.should have(0).items
     Presenter.all.should have(0).items
+
+    last_response.should be_redirect
+    last_response.body.should include('Ooops. Something went wrong. Take a look at the following list and fill the form again:')
   end
 
   it "lists the talks" do

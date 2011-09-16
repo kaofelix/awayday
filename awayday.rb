@@ -33,7 +33,8 @@ class AwayDayApp < Sinatra::Base
       :category => params[:category],
       :duration => params[:duration]
 
-    presenter = Presenter.new :name => params[:name], :email => params[:email]
+    presenter = Presenter.where(:name => params[:name], :email => params[:email]).first
+    presenter ||= Presenter.new :name => params[:name], :email => params[:email]
     presenter.talks << talk
 
     if talk.valid? & presenter.valid?
