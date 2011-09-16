@@ -218,3 +218,33 @@ ol {
     &:nth-child(odd) {background: #FBFBFB}
   }
 }
+
+#faq {
+  position:fixed;
+  top:40px;
+  left:84%;
+  padding: 5px 0 8px 15px;
+  width:250px;
+  height:25px;
+  background-color: #E01920;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#E01920), to(#9E090E));
+  background-image: -moz-linear-gradient(top, #E01920, #9E090E);
+  -moz-box-shadow: 0 1px 2px black;
+  -webkit-box-shadow: 0 1px 2px black;
+  box-shadow: 0 1px 2px black;
+  a {
+    font-family: 'Lobster';
+    font-size:20px;
+    text-shadow: 0 -1px 1px #3D0203;
+    border: 1px solid #faa;
+    color: #fff;
+    display: block;
+    margin: -0.15em 0;
+    margin-left: -0.65em;
+    padding: 0.1em 1.5em 0.3em 1em;
+    text-decoration: none;
+  }
+  /*-webkit-transform: rotate(-90deg); */
+  /*-moz-transform: rotate(-90deg);	*/
+}
+

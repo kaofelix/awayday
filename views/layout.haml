@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Away day form
+    %title Away Day Brazil Submission
     != css :awayday
   %body
     %h1.headline Away Day Brazil
@@ -10,3 +10,5 @@
       =haml :error, :locals => {:errors => session[:errors]}
     #container
       = yield
+    #faq
+      %a{:href => "#", :title => "See the frequent asked questions"} Faq
