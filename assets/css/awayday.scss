@@ -24,6 +24,7 @@ body {
 }
 
 #container {
+  position:relative;
   width: 400px;
   float: center;
   margin: auto;
@@ -220,9 +221,9 @@ ol {
 }
 
 #faq {
-  position:fixed;
-  top:40px;
-  left:84%;
+  position:absolute;
+  top:-120px;
+  left:-190px;
   padding: 5px 0 8px 15px;
   width:270px;
   height:25px;
@@ -244,7 +245,7 @@ ol {
     padding: 0.1em 1.5em 0.3em 1em;
     text-decoration: none;
   }
-  /*-webkit-transform: rotate(-90deg); */
-  /*-moz-transform: rotate(-90deg);	*/
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
 }
 
