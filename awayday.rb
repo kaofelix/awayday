@@ -36,7 +36,7 @@ class AwayDayApp < Sinatra::Base
     presenter = Presenter.new :name => params[:name], :email => params[:email]
     presenter.talks << talk
 
-    if talk.valid? and presenter.valid?
+    if talk.valid? & presenter.valid?
       presenter.save
       redirect "/", flash[:notice] = create_success_message_for(presenter)
     else
@@ -60,17 +60,7 @@ class AwayDayApp < Sinatra::Base
   end
 
   def create_array_of_errors_for(presenter, talk)
-    error_messages = []
-    errors = talk.errors.messages
-    errors = errors.merge presenter.errors.messages
-    errors.each_pair do |key, value|
-      error_message = "#{key.to_s.capitalize}: "
-      value.each do |error|
-        error_message += "#{error.to_s.capitalize}. "
-      end
-      error_messages << error_message
-    end
-    error_messages
+    presenter.errors.messages.merge talk.errors.messages
   end
 end
 

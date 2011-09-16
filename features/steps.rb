@@ -45,8 +45,24 @@ Then /^I will see a message stating that something went wrong$/ do
 end
 
 Then /^a message saying that the summary is too short$/ do
-  page.should have_content "Summary:"
-  page.should have_content "Is too short (minimum is 50 characters)."
+  page.should have_content "Summary"
+  within("#summary_errors") do
+    all("li").any? {|li| li.should have_content "Is too short (minimum is 50 characters)"}
+  end
+end
+
+Then /^a message saying that I forgot my name$/ do
+  page.should have_content "Name"
+  within("#name_errors") do
+    all("li").any? {|li| li.should have_content "Can't be blank"}
+  end
+end
+
+Then /^a message saying that I forgot the title of the talk$/ do
+  page.should have_content "Title"
+  within("#title_errors") do |title_errors|
+    all("li").any? {|li| li.should have_content "Can't be blank"}
+  end
 end
 
 Then /^I will be told that I need to check my information for problems$/ do

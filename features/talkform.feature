@@ -21,7 +21,7 @@ Feature: Talk submission form
     And my workshop proposal will be on the list of proposals
     And I will see a confirmation that my proposal has been submitted
 
-  Scenario: Potential speaker registers with short summary
+  Scenario: Potential speaker try to register with short summary
     Given my name is Carlo Paroli and my email is carlo.paroli@awayday.com
     And my workshop proposal has the following information
     | Title       | Summary                   | Category  | Duration |
@@ -31,6 +31,29 @@ Feature: Talk submission form
     And my workshop proposal wont be on the list of proposals
     And I will see a message stating that something went wrong
     And a message saying that the summary is too short
+
+  Scenario: Potential speaker forget his name
+    Given my name is  and my email is carlo.paroli@awayday.com
+    And my workshop proposal has the following information
+    | Title       | Summary                   | Category  | Duration |
+    | My Workshop | My talk about talks that need a big enough summary! | Technical | 90mins   |
+    When I submit my workshop proposal
+    Then I wont be in the list of possible presenters
+    And my workshop proposal wont be on the list of proposals
+    And I will see a message stating that something went wrong
+    And a message saying that I forgot my name
+
+  Scenario: Potential speaker forget his name and the title of the presentation
+    Given my name is  and my email is carlo.paroli@awayday.com
+    And my workshop proposal has the following information
+    | Title       | Summary                   | Category  | Duration |
+    |             | My talk about talks that need a big enough summary! | Technical | 90mins   |
+    When I submit my workshop proposal
+    Then I wont be in the list of possible presenters
+    And my workshop proposal wont be on the list of proposals
+    And I will see a message stating that something went wrong
+    And a message saying that I forgot my name
+    And a message saying that I forgot the title of the talk
 
   Scenario Outline: A presenter can choose between some defined categories
     Given my name is John Presentation and my email is john.presentation@awayday.com

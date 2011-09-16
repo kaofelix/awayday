@@ -3,5 +3,8 @@
     %p.message= flash[:error]
     %ul
       - unless errors.nil?
-        - errors.each do |error|
-          %li.error= error
+        - errors.each_pair do |error, messages|
+          %li.error{:id => "#{error}_errors"}= error.to_s.capitalize
+          - messages.each do |message|
+            %ul
+              %li.error= message.to_s.capitalize
