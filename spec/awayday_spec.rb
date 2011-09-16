@@ -74,7 +74,7 @@ describe 'The Awayday Submission App' do
     Presenter.all.should have(0).items
 
     last_response.should be_redirect
-    last_response.body.should include('Ooops. Something went wrong. Take a look at the following list and fill the form again:')
+    last_response.body.should include('Ooops. Something went wrong. Take a look at the following list:')
   end
 
   it "lists the talks" do

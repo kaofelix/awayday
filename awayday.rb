@@ -23,8 +23,13 @@ class AwayDayApp < Sinatra::Base
     css_compression :sass
   end
 
+  after do
+    session[:params], session[:errors] = {}, {} unless status == 302
+  end
+
   get '/' do
-    haml :form, :locals => {:durations => Talk::DURATIONS, :categories => Talk::CATEGORIES}
+    session[:params] ||= {}
+    haml :form, :locals => {:durations => Talk::DURATIONS, :categories => Talk::CATEGORIES, :params => session[:params]}
   end
 
   post '/talk' do
@@ -39,10 +44,11 @@ class AwayDayApp < Sinatra::Base
 
     if talk.valid? & presenter.valid?
       presenter.save
-      redirect "/", flash[:notice] = create_success_message_for(presenter)
+      redirect "/", flash[:notice] = success_message_for(presenter)
     else
-      session[:errors] = create_array_of_errors_for(presenter, talk)
-      redirect "/", flash[:error] = create_error_message
+      session[:errors] = errors_in(presenter, talk)
+      session[:params] = copy_of params
+      redirect "/", flash[:error] = error_message
     end
   end
 
@@ -52,16 +58,24 @@ class AwayDayApp < Sinatra::Base
 
   private
 
-  def create_success_message_for(presenter)
+  def success_message_for(presenter)
     "Congratulations #{presenter.name}. Your proposal was sent."
   end
 
-  def create_error_message
-    "Ooops. Something went wrong. Take a look at the following list and fill the form again:" 
+  def error_message
+    "Ooops. Something went wrong. Take a look at the following list:"
   end
 
-  def create_array_of_errors_for(presenter, talk)
+  def errors_in(presenter, talk)
     presenter.errors.messages.merge talk.errors.messages
+  end
+
+  def copy_of(params)
+    params_copy = {}
+    params.each_pair do |key, value|
+      params_copy[key.to_sym] = value
+    end
+    params_copy
   end
 end
 

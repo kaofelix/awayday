@@ -1,20 +1,19 @@
 %form{:action => '/talk', :method => "POST"}
   %label{:for=>'name'} Name
-  %input#name{:type=>'text', :name=> 'name', :placeholder => "Enter your name", :required => true}
+  %input#name{:type=>'text', :name=> 'name', :placeholder => "Enter your name", :required => true, :value => params[:name] }
   %label{:for=>'email'} Email
-  %input#email{:type=>'email', :name=> 'email', :placeholder => "Enter your email", :required => true}
+  %input#email{:type=>'email', :name=> 'email', :placeholder => "Enter your email", :required => true, :value => params[:email]}
   %label{:for=>'title'} Title
-  %input#title{:type=>'text', :name=> 'title', :placeholder => "Enter the title of your proposal", :required => true}
+  %input#title{:type=>'text', :name=> 'title', :placeholder => "Enter the title of your proposal", :required => true, :value => params[:title]}
   %label{:for=>'summary'} Summary
-  %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary. (50-400 chars)", :maxlength => "400", :required => true}
+  %textarea#summary{:name=> 'summary', :placeholder => "Enter the summary. (50-400 chars)", :maxlength => "400", :required => true}= params[:summary]
   %label{:for=>'category'} Category
   %select#category{:name => "category", :required => true}
     - categories.each do |category|
-      %option #{category}
+      %option{:selected => category.eql?(params[:category])} #{category}
   %label{:for=>'duration'} Duration
   #duration
     - durations.each do |type, duration|
-      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}", :checked => duration.eql?(45),  :required => true}
+      %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}", :checked => duration.eql?(params[:duration].to_i) || duration.eql?(45),  :required => true}
       %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
   %input.green.button{:type=>'submit', :value=> 'Submit'}
-
