@@ -23,15 +23,43 @@ body {
   background: #F2F2F2 url("/images/background.png") top center;
 }
 
-#container {
+
+#header-container {
   position:relative;
   width: 400px;
   float: center;
   margin: auto;
 }
 
+#faq-container {
+  position:relative;
+  width: 600px;
+  float: center;
+  margin: auto;
+  margin-top: 50px;
+  .question {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 24px;
+    font-family: LobsterTwo;
+  }
+  .answer {
+    margin-top: 5px;
+    color: #888;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+}
+
 #message_container {
   width: 500px;
+  float: center;
+  margin: auto;
+}
+
+#form-container {
+  position:relative;
+  width: 400px;
   float: center;
   margin: auto;
 }
@@ -114,9 +142,13 @@ textarea {
   }
 
 }
+a {
+  text-decoration: none;
+}
 
 .headline {
   text-align: center;
+  text-decoration: none;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
   font-size: 52px;
   color: #64991e;
@@ -222,8 +254,8 @@ ol {
 
 #faq {
   position:absolute;
-  top:-120px;
-  left:-190px;
+  top:-75px;
+  left:-180px;
   padding: 5px 0 8px 15px;
   width:270px;
   height:25px;
@@ -237,7 +269,7 @@ ol {
     font-family: 'Lobster';
     font-size:20px;
     text-shadow: 0 -1px 1px #3D0203;
-    border: 1px solid #faa;
+    border: 1px dashed #faa;
     color: #fff;
     display: block;
     margin: -0.15em 0;

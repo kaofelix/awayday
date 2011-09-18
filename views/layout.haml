@@ -4,11 +4,12 @@
     %title Away Day Brazil Submission
     != css :awayday
   %body
-    %h1.headline Away Day Brazil
+    #header-container
+      %a{:href => "/"}
+        %h1.headline Away Day Brazil
+      #faq
+        %a{:href => "/faq", :title => "See the frequent asked questions"} Faq
     #message_container
       =haml :notice
       =haml :error, :locals => {:errors => session[:errors]}
-    #container
-      = yield
-      #faq
-        %a{:href => "#", :title => "See the frequent asked questions"} Faq
+    = yield

@@ -56,6 +56,10 @@ class AwayDayApp < Sinatra::Base
     haml :talks, :locals => {:talks => Talk.all}
   end
 
+  get '/faq' do
+    haml :faq
+  end
+
   private
 
   def success_message_for(presenter)
