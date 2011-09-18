@@ -14,6 +14,10 @@ class AwayDayApp < Sinatra::Base
   enable :sessions
   use Rack::Flash, :sweep => true
 
+  configure do
+    mime_type :ttf, 'application/x-font-opentype'
+  end
+
   assets do
     serve '/css', from: '/assets/css'
     serve '/images', from: '/assets/images'
