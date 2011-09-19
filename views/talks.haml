@@ -1,6 +1,7 @@
 %section.talks
   - if talks.empty?
-    %section.empty= "There are no talks yet submitted."
+    %section.empty
+      %a{:href => "/"}= "There are no talks yet submitted."
   %ul
     - talks.each do |talk|
       %li
