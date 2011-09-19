@@ -1,4 +1,6 @@
 %section.talks
+  - if talks.empty?
+    %section.empty= "There are no talks yet submitted."
   %ul
     - talks.each do |talk|
       %li
