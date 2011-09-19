@@ -1,9 +1,14 @@
-%ol
-  - talks.each do |talk|
-    %li
-      %span= "Presenter #{talk.presenter.name}"
-      %span= "Email #{talk.presenter.email}"
-      %span= "Title: #{talk.title}"
-      %span= "Summary: #{talk.summary}"
-      %span= "Category: #{talk.category}"
-      %span= "Duration: #{talk.duration} mins"
+%section.talks
+  %ul
+    - talks.each do |talk|
+      %li
+        %section.talk
+          %section.header
+            %h1= "#{talk.title}"
+            %h2= "#{talk.presenter.name}"
+            %span= "#{talk.presenter.email}"
+          %section.content
+            %span= "#{talk.summary}"
+          %section.footer
+            %span.category= "#{talk.category}"
+            %span.duration= "#{talk.duration} mins"
