@@ -18,6 +18,41 @@ $light-red: lighten($red, 40%);
   src: url('/fonts/Lobster_Two/LobsterTwo-Regular.ttf');
 }
 
+@mixin message-box($from-color, $to-color, $border) {
+  position: relative;
+
+  font-size: 20px;
+  text-align: center;
+
+  margin: 2px 6px 18px 0px;
+  padding: 7px 15px;
+
+  color: white;
+
+  background-color: $to-color;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($from-color), to($to-color));
+  background-image: -moz-linear-gradient(top, $from-color, $to-color);
+  background-image: -ms-linear-gradient(top, $from-color, $to-color);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from-color), color-stop(100%, $to-color));
+  background-image: -webkit-linear-gradient(top, $from-color, $to-color);
+  background-image: -o-linear-gradient(top, $from-color, $to-color);
+  background-image: linear-gradient(top, $from-color, $to-color);
+
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: $to-color $to-color $border;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-width: 1px;
+  border-style: solid;
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
 body {
   font: 11px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
   background: #F2F2F2 url("/images/background.png") top center;
@@ -213,64 +248,11 @@ a {
 }
 
 .notice {
-  color: white;
-  background-color: #57A957;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#62C462), to(#57A957));
-  background-image: -moz-linear-gradient(top, #62C462, #57A957);
-  background-image: -ms-linear-gradient(top, #62C462, #57A957);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62C462), color-stop(100%, #57A957));
-  background-image: -webkit-linear-gradient(top, #62C462, #57A957);
-  background-image: -o-linear-gradient(top, #62C462, #57A957);
-  background-image: linear-gradient(top, #62C462, #57A957);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #57A957 #57A957 #3D773D;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  font-size: 20px;
-  text-align: center;
-  margin: 2px 6px 16px 0px;
-  border-width: 1px;
-  position: relative;
-  padding: 7px 15px;
-  margin-bottom: 18px;
-  border-style: solid;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  @include message-box(#62C462, #57A957, #3D773D);
 }
 
 .error {
-  position: relative;
-  padding: 7px 15px;
-  margin-bottom: 18px;
-  color: white;
-  background-color: #C43C35;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#EE5F5B), to(#C43C35));
-  background-image: -moz-linear-gradient(top, #EE5F5B, #C43C35);
-  background-image: -ms-linear-gradient(top, #EE5F5B, #C43C35);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #EE5F5B), color-stop(100%, #C43C35));
-  background-image: -webkit-linear-gradient(top, #EE5F5B, #C43C35);
-  background-image: -o-linear-gradient(top, #EE5F5B, #C43C35);
-  background-image: linear-gradient(top, #EE5F5B, #C43C35);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #C43C35 #C43C35 #882A25;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  border-width: 1px;
-  border-style: solid;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  font-size: 20px;
-  text-align: center;
-  margin: 2px 6px 16px 0px;
-  padding: 5px 7px 5px 5px;
+  @include message-box(#EE5F5B, #C43C35, #882A25);
   ul {
     li {
       font-size: 14px;
