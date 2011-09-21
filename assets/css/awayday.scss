@@ -1,4 +1,4 @@
-$green: #228B22;
+$green: #57A957;
 $lighter-green: lighten($green, 10%);
 $light-green: lighten($green, 40%);
 $darker-green: darken($green, 10%);
@@ -16,6 +16,18 @@ $light-red: lighten($red, 40%);
 @font-face {
   font-family: LobsterTwo;
   src: url('/fonts/Lobster_Two/LobsterTwo-Regular.ttf');
+}
+
+@mixin border-radius-of($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin no-box-shadow {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 @mixin message-box($from-color, $to-color, $border) {
@@ -45,12 +57,28 @@ $light-red: lighten($red, 40%);
   border-width: 1px;
   border-style: solid;
 
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  @include border-radius-of(4px);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+@mixin inner-container($size) {
+  position:relative;
+  width: $size;
+  float: center;
+  margin: auto;
+}
+
+@mixin color-text($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+@mixin grey-form-box {
+  width: 97%;
+  border: 2px solid #E5E5E5;
+  background: #FBFBFB;
 }
 
 body {
@@ -58,60 +86,56 @@ body {
   background: #F2F2F2 url("/images/background.png") top center;
 }
 
-
 #header-container {
-  position:relative;
-  width: 400px;
-  float: center;
-  margin: auto;
+  @include inner-container(400px);
+}
+
+.headline {
+  @include color-text(52px, #57A957);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  color: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62C462), color-stop(100%, #57A957));
+  color: -webkit-linear-gradient(top, #62C462, #57A957);
+  color: -moz-linear-gradient(top, #62C462, #57A957);
+  color: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+  color: linear-gradient(top, #62C462, #57A957);
+  margin: 0px 10px 25px 10px;
+  font-family: 'Lobster';
+}
+
+#form-container {
+  @extend #header-container;
+}
+
+#message_container {
+  @include inner-container(550px);
 }
 
 #faq-container {
-  position:relative;
-  width: 600px;
-  float: center;
-  margin: auto;
+  @include inner-container(600px);
   margin-top: 50px;
   .question {
+    @include color-text(24px, #666);
     margin-bottom: 5px;
-    color: #666;
-    font-size: 24px;
     font-family: LobsterTwo;
   }
   .answer {
+    @include color-text(18px, #888);
     margin-top: 5px;
-    color: #888;
-    font-size: 18px;
     margin-left: 10px;
   }
 }
 
-#message_container {
-  width: 500px;
-  float: center;
-  margin: auto;
-}
-
-#form-container {
-  position:relative;
-  width: 400px;
-  float: center;
-  margin: auto;
-}
-
 label {
-  color: #777;
-  font-size: 18px;
+  @include color-text(18px, #777);
 }
 
 input[type="text"], input[type="email"] {
-  color: #666;
-  font-size: 20px;
+  @include color-text(20px, #666);
+  @include grey-form-box;
   margin: 2px 6px 10px 0px;
   padding: 5px 7px 5px 5px;
-  width: 97%;
-  border: 2px solid #E5E5E5;
-  background: #FBFBFB;
 }
 
 input[type="radio"] {
@@ -121,82 +145,41 @@ input[type="radio"] {
 }
 
 select {
-  color: #666;
-  font-size: 18px;
+  @include color-text(18px, #666);
   margin: 5px 0px 15px 0px;
   width: 100%;
 }
 
-::-webkit-input-placeholder {
-  color: #CCC;
-  font-size: 16px;
-}
-
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-  color: #CCC;
-  font-size: 16px;
+  @include color-text(16px, #CCC);
+}
+
+::-webkit-input-placeholder {
+  @include color-text(16px, #CCC);
 }
 
 textarea {
-  color: #666;
-  font: 18px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+  @include color-text(18px, #666);
+  @include grey-form-box;
+  font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
   margin: 2px 6px 10px 0px;
   padding: 5px 7px 5px 5px;
-  width: 97%;
   height: 70px;
-  border: 2px solid #E5E5E5;
-  background: #FBFBFB;
 }
 
 #duration {
-  color: #666;
-  font-size: 20px;
+  @include color-text(20px, #666);
   padding: 0px 5px 10px 15px;
   margin: 2px;
 }
 
-#duration .input {
-  margin-right: 5px;
-}
-
-.submit {
-  background-color: $green;
-  cursor: pointer;
-  text-transform: uppercase;
-  padding: 9px 30px;
-  text-align: center;
-  width: 50%;
-  float: left;
-  margin-left: 25%;
-  color: #FFF;
-  border: 2px solid #DDD;
-  &:hover {
-    background-color: $light-green;
-    color: $darker-green;
-  }
-
-}
 a {
   text-decoration: none;
 }
 
-.headline {
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
-  font-size: 52px;
-  color: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62C462), color-stop(100%, #57A957));
-  color: -webkit-linear-gradient(top, #62C462, #57A957);
-  color: -moz-linear-gradient(top, #62C462, #57A957);
-  color: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
-  color: linear-gradient(top, #62C462, #57A957);
-  color: #57A957;
-  margin: 0px 10px 25px 10px;
-  font-family: 'Lobster';
-}
-
 .button {
+  @include border-radius-of(.2em);
   display: inline-block;
   vertical-align: baseline;
   margin: 0 2px;
@@ -210,9 +193,6 @@ a {
   float: left;
   padding: .5em 2em .55em;
   text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  -webkit-border-radius: .2em;
-  -moz-border-radius: .2em;
-  border-radius: .2em;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
@@ -261,9 +241,7 @@ a {
       margin-bottom: 1px;
       text-align: left;
       background: none;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
+      @include no-box-shadow;
     }
   }
 }
@@ -285,13 +263,13 @@ a {
     font-family: 'Lobster';
     font-size:20px;
     text-shadow: 0 -1px 1px #3D0203;
+    text-decoration: none;
     border: 1px dashed #faa;
     color: #fff;
     display: block;
     margin: -0.15em 0;
     margin-left: -0.65em;
     padding: 0.1em 1.5em 0.3em 1em;
-    text-decoration: none;
   }
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -301,19 +279,15 @@ a {
   margin-top: 40px;
   .empty {
     a{
+      @include color-text(52px, #AAA);
       display: block;
       text-align: center;
       text-decoration: none;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
-      font-size: 52px;
-      color: #AAA;
-      color: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
-      color: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
       width: 500px;
       margin:  auto;
       margin-top:  120px;
       font-family: 'Lobster';
-      font-size: 52px;
     }
   }
 }
@@ -338,14 +312,12 @@ section.talk {
     background-color: rgba(164, 234, 174, 0.8);
   }
   h1 {
-    font-size: 18px;
+    @include color-text(18px, #444);
     margin: 2px;
-    color: #444;
   }
   h2 {
-    font-size: 14px;
+    @include color-text(14px, #666);
     margin: 2px;
-    color: #666;
   }
   .header {
     font-weight:bold;
