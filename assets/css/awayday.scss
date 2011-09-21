@@ -268,19 +268,6 @@ a {
   }
 }
 
-ol {
-  border: 2px solid #888;
-  background: #DDD;
-  margin: 5px 10px;
-  li {
-    color: #444;
-    font-size: 16px;
-    padding: 8px 7px 8px 5px;
-    &:nth-child(even) {background: #DDD}
-    &:nth-child(odd) {background: #FBFBFB}
-  }
-}
-
 #faq {
   position:absolute;
   top:-75px;
