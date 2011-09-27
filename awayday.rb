@@ -6,6 +6,7 @@ require 'mongoid'
 require 'haml'
 
 Dir["./models/**/*.rb"].each { |model| require model }
+Dir["./helpers/**/*.rb"].each { |helper| require helper }
 
 class AwayDayApp < Sinatra::Base
   set :root, File.dirname(__FILE__)
@@ -56,6 +57,14 @@ class AwayDayApp < Sinatra::Base
     haml :talks, :locals => {:talks => Talk.all}
   end
 
+  get '/talks.csv' do
+    csv = CsvHelper.csv_from Talk.all
+
+    attachment("talks_" + Time.now.strftime("%m-%d-%Y") + ".csv")
+    response.headers['Content-Type'] = "text/csv;charset=utf-8"
+    response.write(csv)
+  end
+
   get '/faq' do
     haml :faq
   end
@@ -81,5 +90,6 @@ class AwayDayApp < Sinatra::Base
     end
     params_copy
   end
+
 end
 
