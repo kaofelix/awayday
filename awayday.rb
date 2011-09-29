@@ -15,6 +15,8 @@ class AwayDayApp < Sinatra::Base
   enable :sessions
   use Rack::Flash, :sweep => true
 
+  DEADLINE = Time.new(2011, 9, 29, 9, 0, 0, "-03:00")
+
   assets do
     serve '/css', from: '/assets/css'
     serve '/images', from: '/assets/images'
@@ -29,6 +31,8 @@ class AwayDayApp < Sinatra::Base
   end
 
   get '/' do
+    redirect "/talks", flash[:error] = "Submissions closed." if deadline_reached?
+
     session[:params] ||= {}
     haml :form, :locals => {:durations => Talk::DURATIONS, :categories => Talk::CATEGORIES, :params => session[:params]}
   end
@@ -89,6 +93,10 @@ class AwayDayApp < Sinatra::Base
       params_copy[key.to_sym] = value
     end
     params_copy
+  end
+
+  def deadline_reached?
+    Time.new.localtime("-03:00") > DEADLINE
   end
 
 end

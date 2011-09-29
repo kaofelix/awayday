@@ -88,6 +88,7 @@ body {
 
 #header-container {
   @include inner-container(400px);
+  margin-bottom: 40px;
 }
 
 .headline {
@@ -110,6 +111,7 @@ body {
 
 #message_container {
   @include inner-container(550px);
+  margin-bottom: 20px;
 }
 
 #faq-container {
@@ -276,7 +278,6 @@ a {
 }
 
 .talks {
-  margin-top: 40px;
   .empty {
     a{
       @include color-text(52px, #AAA);
@@ -297,8 +298,8 @@ a {
 }
 
 section.talk {
-  width: 280px;
-  height: 280px;
+  width: 335px;
+  height: 265px;
   float: left;
   padding: 10px;
   margin: 10px 10px 5px 5px;
@@ -321,7 +322,7 @@ section.talk {
   }
   .header {
     font-weight:bold;
-    height: 118px;
+    height: 125px;
     border-bottom: 2px solid rgba(164, 234, 174, 0.9);
     padding-bottom: 5px;
     span {
@@ -330,7 +331,7 @@ section.talk {
   }
   .content {
     padding: 5px;
-    height: 128px;
+    height: 105px;
   }
   .footer {
     border-top: 2px solid rgba(164, 234, 174, 0.9);
